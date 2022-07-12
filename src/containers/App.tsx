@@ -1,23 +1,28 @@
 import React from 'react';
-import { Layout } from '../components/Layout';
-import { Typography } from '../components/Typography';
-import { Avatar } from '../components/Avatar';
+import { Route, Routes } from 'react-router-dom';
+
+import { AppLayout } from '../layouts/AppLayout';
+import { AppBar } from '../components/AppBar';
+import { TabBars, TabBar } from '../components/Tabs';
+import { Divider } from '../components/Divider';
+import { HomePage } from '../components/pages/HomePage';
 
 function App() {
   return (
-    <Layout>
-      <header className="flex justify-center items-center gap-2 py-4">
-        <Avatar />
-        <Typography
-          component="h1"
-          variant="heading"
-          fontWeight="bold"
-          className="text-center text-blue-500"
-        >
-          React personal notes
-        </Typography>
-      </header>
-    </Layout>
+    <AppLayout>
+      <AppBar />
+
+      <TabBars>
+        <TabBar to="/">Home</TabBar>
+        <Divider />
+        <TabBar to="/archived">Archived</TabBar>
+      </TabBars>
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/archived" element={<p>archived</p>} />
+      </Routes>
+    </AppLayout>
   );
 }
 
