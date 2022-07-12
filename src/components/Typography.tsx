@@ -2,7 +2,7 @@ import React from 'react';
 import { clsx } from 'clsx';
 
 type Variant = 'heading' | 'sub-heading' | 'body' | 'caption';
-type Component = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+type Component = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 type FontWeight = 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
 
 type VariantStyle = {
@@ -48,6 +48,7 @@ function Typography(props: Props) {
     className,
     variantStyle[variant],
     fontWeightStyle[fontWeight],
+    'text-foreground',
   );
 
   return React.createElement(
