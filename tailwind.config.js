@@ -9,6 +9,7 @@ module.exports = {
         accent: '#eeeeee',
         foreground: '#151515',
         background: '#ffffff',
+        screen: '#f1f1f1',
       },
     },
   },
