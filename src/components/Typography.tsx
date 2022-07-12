@@ -44,18 +44,9 @@ function Typography(props: Props) {
     bold: 'font-bold',
   };
 
-  const classNameCompose = clsx(
-    className,
-    variantStyle[variant],
-    fontWeightStyle[fontWeight],
-    'text-foreground',
-  );
+  const classNameCompose = clsx(className, variantStyle[variant], fontWeightStyle[fontWeight]);
 
-  return React.createElement(
-    component,
-    { className: classNameCompose },
-    children,
-  );
+  return React.createElement(component, { className: classNameCompose }, children);
 }
 
 export { Typography };

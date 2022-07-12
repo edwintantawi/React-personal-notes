@@ -5,23 +5,34 @@ import { AppLayout } from '../layouts/AppLayout';
 import { AppBar } from '../components/AppBar';
 import { TabBars, TabBar } from '../components/Tabs';
 import { Divider } from '../components/Divider';
-import { HomePage } from '../components/pages/HomePage';
+import { getInitialData } from '../utils';
+import { NotesMasonry } from '../pages/NotesMasonry';
+import { Footer } from '../components/Footer';
 
 function App() {
+  const [notes] = React.useState(getInitialData());
+
+  const archivedNotes = notes.filter((note) => note.archived);
+  const unarchivedNotes = notes.filter((note) => !note.archived);
+
   return (
     <AppLayout>
       <AppBar />
 
       <TabBars>
         <TabBar to="/">Home</TabBar>
-        <Divider />
+        <Divider direction="vertical" />
         <TabBar to="/archived">Archived</TabBar>
       </TabBars>
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/archived" element={<p>archived</p>} />
-      </Routes>
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<NotesMasonry notes={unarchivedNotes} />} />
+          <Route path="/archived" element={<NotesMasonry notes={archivedNotes} />} />
+        </Routes>
+      </main>
+      <Divider />
+      <Footer />
     </AppLayout>
   );
 }

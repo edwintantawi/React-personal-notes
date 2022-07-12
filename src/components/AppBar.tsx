@@ -6,8 +6,7 @@ import { Typography } from './Typography';
 import { IconButton } from './IconButton';
 
 function AppBar() {
-  const className =
-    'sticky top-0 z-50 flex items-center justify-between py-5 bg-white border-b';
+  const className = 'sticky top-0 z-50 flex items-center justify-between py-4 bg-white border-b';
 
   return (
     <header className={className}>

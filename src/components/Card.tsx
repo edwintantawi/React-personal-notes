@@ -3,17 +3,14 @@ import React from 'react';
 import { Typography } from './Typography';
 import { showFormattedDate } from '../utils';
 import { Divider } from './Divider';
+import { Note } from '../@types';
 
-interface Props extends React.PropsWithChildren {
-  title: string;
-  body: string;
-  date: string;
-}
+interface Props extends Note {}
 
 function Card(props: Props) {
-  const { title, body, date } = props;
+  const { title, body, createdAt } = props;
 
-  const formattedDate = showFormattedDate(date);
+  const formattedDate = showFormattedDate(createdAt);
 
   return (
     <article className="flex flex-col gap-3 bg-primary p-4 break-inside-avoid-column">
@@ -23,10 +20,10 @@ function Card(props: Props) {
         </Typography>
       </header>
 
-      <Typography component="p" variant="body" className="text-gray-500">
+      <Typography component="p" variant="body" className="text-foreground-secondary">
         {body}
       </Typography>
-      <Divider direction="horizontal" />
+      <Divider />
 
       <footer className="text-end">
         <Typography component="span" variant="caption">

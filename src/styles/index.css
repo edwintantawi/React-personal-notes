@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-screen;
+  @apply bg-screen text-foreground-primary;
 }

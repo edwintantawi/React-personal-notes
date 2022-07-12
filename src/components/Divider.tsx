@@ -11,7 +11,7 @@ interface Props {
 }
 
 function Divider(props: Props) {
-  const { direction = 'vertical' } = props;
+  const { direction = 'horizontal' } = props;
 
   const directionStyle: DirectionStyle = {
     vertical: 'h-8 border-r',

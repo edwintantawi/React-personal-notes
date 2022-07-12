@@ -8,15 +8,13 @@ function TabBar(props: Props) {
   const { children, to } = props;
 
   const baseClassName = 'flex justify-center p-3 font-bold';
-  const activeClassName = 'bg-primary border-b-2 border-foreground';
+  const activeClassName = 'bg-primary border-b-2 border-foreground-primary';
 
   return (
     <li className="flex-1">
       <NavLink
         to={to}
-        className={({ isActive }) =>
-          clsx(baseClassName, { [activeClassName]: isActive })
-        }
+        className={({ isActive }) => clsx(baseClassName, { [activeClassName]: isActive })}
       >
         {children}
       </NavLink>
