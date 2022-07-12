@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { PencilAltIcon } from '@heroicons/react/solid';
 
 import { AppLayout } from '../layouts/AppLayout';
 import { AppBar } from '../components/AppBar';
@@ -8,6 +9,7 @@ import { Divider } from '../components/Divider';
 import { getInitialData } from '../utils';
 import { NotesMasonry } from '../pages/NotesMasonry';
 import { Footer } from '../components/Footer';
+import { FloatingActionButton } from '../components/FloatingActionButton';
 
 function App() {
   const [notes] = React.useState(getInitialData());
@@ -25,14 +27,18 @@ function App() {
         <TabBar to="/archived">Archived</TabBar>
       </TabBars>
 
-      <main className="flex-1">
+      <main className="flex-1 mb-8">
         <Routes>
           <Route path="/" element={<NotesMasonry notes={unarchivedNotes} />} />
           <Route path="/archived" element={<NotesMasonry notes={archivedNotes} />} />
         </Routes>
       </main>
+
       <Divider />
+
       <Footer />
+
+      <FloatingActionButton StartIcon={PencilAltIcon}>Add new note</FloatingActionButton>
     </AppLayout>
   );
 }
