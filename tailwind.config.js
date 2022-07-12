@@ -7,7 +7,10 @@ module.exports = {
         primary: '#f6f6f6',
         secondary: '#fbfbfb',
         accent: '#eeeeee',
-        foreground: '#151515',
+        foreground: {
+          primary: '#151515',
+          secondary: '#797979',
+        },
         background: '#ffffff',
         screen: '#f1f1f1',
       },
