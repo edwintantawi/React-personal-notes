@@ -53,7 +53,7 @@ function NewNote(props: Props) {
           name="title"
           label="Note title:"
           placeholder="My amazing note..."
-          maxLength={30}
+          maxLength={50}
           value={values.title}
           onChange={handleChangeValue}
         />
