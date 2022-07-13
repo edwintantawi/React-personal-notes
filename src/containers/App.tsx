@@ -19,7 +19,7 @@ function App() {
   const archivedNotes = processedNotes.filter((note) => note.archived);
   const unarchivedNotes = processedNotes.filter((note) => !note.archived);
 
-  const handleSearchNotes = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSearchNotes = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTerm(event.target.value);
   };
 

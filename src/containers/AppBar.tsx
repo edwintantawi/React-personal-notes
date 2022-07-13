@@ -13,7 +13,7 @@ import { Typography } from '../components/Typography';
 interface Props {
   term: string;
   clearSearch: () => void;
-  onSearch: (event: React.ChangeEvent<HTMLFormElement>) => void;
+  onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function AppBar(props: Props) {
@@ -53,25 +53,24 @@ function AppBar(props: Props) {
           )}
         </div>
 
-        <form className="flex-1" onChange={onSearch}>
-          <InputField
-            name="term"
-            value={term}
-            ref={searchRef}
-            placeholder="Search notes..."
-            className={clsx({ hidden: !isSearch })}
-          />
-        </form>
+        <InputField
+          name="term"
+          value={term}
+          ref={searchRef}
+          placeholder="Search notes..."
+          className={clsx('flex-1', { hidden: !isSearch })}
+          onChange={onSearch}
+        />
 
         <div className="flex items-center gap-2">
-          <IconButton onClick={handleToggleSearch}>
+          <IconButton label={isSearch ? 'close search' : 'search'} onClick={handleToggleSearch}>
             {isSearch ? <XIcon /> : <SearchIcon />}
           </IconButton>
         </div>
       </div>
 
       <TabBars>
-        <TabBar to="/new">
+        <TabBar to="/new" aria-label="add note">
           <PlusIcon className="w-5 h-5" />
         </TabBar>
         <Divider direction="vertical" />

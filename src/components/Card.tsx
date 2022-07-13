@@ -37,13 +37,16 @@ function Card(props: Props) {
 
       <footer className="flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-1">
-          <IconButton onClick={() => handleArchiveNote(id)}>
+          <IconButton
+            label={archived ? 'unarchived' : 'archived'}
+            onClick={() => handleArchiveNote(id)}
+          >
             {archived ? <UploadIcon /> : <ArchiveIcon />}
           </IconButton>
 
           <Divider direction="vertical" />
 
-          <IconButton onClick={() => handleDeleteNote(id)}>
+          <IconButton label="delete" onClick={() => handleDeleteNote(id)}>
             <XCircleIcon className="text-red-500" />
           </IconButton>
         </div>
