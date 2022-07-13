@@ -3,12 +3,12 @@ import { clsx } from 'clsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchIcon, XIcon, PlusIcon } from '@heroicons/react/solid';
 
-import { Avatar } from './Avatar';
-import { IconButton } from './IconButton';
-import { TabBar, TabBars } from './Tabs';
-import { Divider } from './Divider';
-import { InputField } from './InputField';
-import { Typography } from './Typography';
+import { Avatar } from '../components/Avatar';
+import { IconButton } from '../components/IconButton';
+import { TabBar, TabBars } from '../components/Tabs';
+import { Divider } from '../components/Divider';
+import { InputField } from '../components/InputField';
+import { Typography } from '../components/Typography';
 
 interface Props {
   term: string;

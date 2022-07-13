@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import { clsx } from 'clsx';
+
 import { Typography } from './Typography';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
