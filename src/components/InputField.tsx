@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { clsx } from 'clsx';
 import { Typography } from './Typography';
 
@@ -8,7 +8,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   multiLine?: boolean;
 }
 
-function InputField(props: Props) {
+function ForwardInputField(props: Props, ref: React.ForwardedRef<HTMLInputElement>) {
   const {
     className,
     label,
@@ -23,9 +23,7 @@ function InputField(props: Props) {
   const id = React.useId();
 
   const baseClassName =
-    'block w-full py-4 border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50';
-
-  const classNameCompose = clsx(baseClassName, className);
+    'block w-full py-2 border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50';
 
   const handleChangeCompose = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (maxLength && event.target.value.length > maxLength) return;
@@ -34,11 +32,12 @@ function InputField(props: Props) {
 
   const baseProperties = {
     ...restProps,
+    ref,
     id,
     type,
     maxLength,
     value,
-    className: classNameCompose,
+    className: baseClassName,
     onChange: handleChangeCompose,
   };
 
@@ -46,7 +45,7 @@ function InputField(props: Props) {
   const inputElement = React.createElement(multiLine ? 'textarea' : 'input', baseProperties, null);
 
   return (
-    <label htmlFor={id} className="space-y-2">
+    <label htmlFor={id} className={clsx('space-y-2', className)}>
       {label && (
         <Typography component="span" fontWeight="semibold">
           {label}
@@ -61,5 +60,7 @@ function InputField(props: Props) {
     </label>
   );
 }
+
+const InputField = forwardRef<HTMLInputElement, Props>(ForwardInputField);
 
 export { InputField };

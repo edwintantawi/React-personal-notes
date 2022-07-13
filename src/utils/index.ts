@@ -59,4 +59,7 @@ const showFormattedDate = (date: string) => {
 const sortNotesByDateDesc = (a: Note, b: Note) =>
   new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
 
-export { getInitialData, showFormattedDate, sortNotesByDateDesc };
+const filterNotesByTerm = (term: string) => (note: Note) =>
+  Object.values(note).join(' ').toLowerCase().includes(term.toLowerCase());
+
+export { getInitialData, showFormattedDate, sortNotesByDateDesc, filterNotesByTerm };
