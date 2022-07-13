@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 body {
-  @apply bg-screen text-foreground-primary;
+  @apply bg-screen text-foreground-primary h-screen overflow-y-scroll;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-foreground-secondary/50;
 }
