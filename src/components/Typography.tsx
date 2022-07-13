@@ -30,10 +30,10 @@ function Typography(props: Props) {
   } = props;
 
   const variantStyle: VariantStyle = {
-    body: 'text-base',
-    caption: 'text-sm',
-    'sub-heading': 'text-lg',
-    heading: 'text-2xl',
+    body: 'text-sm sm:text-base',
+    caption: 'text-xs sm:text-sm',
+    'sub-heading': 'text-base sm:text-lg',
+    heading: 'text-xl sm:text-2xl',
   };
 
   const fontWeightStyle: FontWeightStyle = {

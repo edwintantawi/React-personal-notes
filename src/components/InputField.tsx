@@ -23,7 +23,7 @@ function ForwardInputField(props: Props, ref: React.ForwardedRef<HTMLInputElemen
   const id = React.useId();
 
   const baseClassName =
-    'block w-full py-2 border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50';
+    'block w-full py-2 border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50 text-xs sm:text-base';
 
   const handleChangeCompose = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (maxLength && event.target.value.length > maxLength) return;

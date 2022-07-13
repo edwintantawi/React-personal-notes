@@ -1,7 +1,7 @@
 import React from 'react';
 import { clsx } from 'clsx';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { SearchIcon, XIcon, DotsHorizontalIcon, PlusIcon } from '@heroicons/react/solid';
+import { SearchIcon, XIcon, PlusIcon } from '@heroicons/react/solid';
 
 import { Avatar } from './Avatar';
 import { IconButton } from './IconButton';
@@ -58,6 +58,7 @@ function AppBar(props: Props) {
             name="term"
             value={term}
             ref={searchRef}
+            placeholder="Search notes..."
             className={clsx({ hidden: !isSearch })}
           />
         </form>
@@ -65,10 +66,6 @@ function AppBar(props: Props) {
         <div className="flex items-center gap-2">
           <IconButton onClick={handleToggleSearch}>
             {isSearch ? <XIcon /> : <SearchIcon />}
-          </IconButton>
-
-          <IconButton>
-            <DotsHorizontalIcon />
           </IconButton>
         </div>
       </div>

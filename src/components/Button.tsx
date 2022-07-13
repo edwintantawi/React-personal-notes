@@ -27,7 +27,7 @@ function Button(props: Props) {
     secondary: 'border text-foreground-primary',
   };
 
-  const baseClassName = 'py-3 px-8 font-bold';
+  const baseClassName = 'py-3 px-8 font-bold text-xs sm:text-base';
   const classNameCompose = clsx(baseClassName, variantClassName[variant], { 'w-full': fullWidth });
 
   return (

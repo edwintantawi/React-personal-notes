@@ -8,6 +8,7 @@ import { filterNotesByTerm, getInitialData, sortNotesByDateDesc } from '../utils
 import { NotesMasonry } from '../pages/NotesMasonry';
 import { Footer } from '../components/Footer';
 import { NewNote } from '../pages/NewNote';
+import { Note } from '../@types';
 
 function App() {
   const [notes, setNotes] = React.useState(getInitialData());
@@ -24,13 +25,46 @@ function App() {
 
   const clearSearch = () => setTerm('');
 
+  const handleDeleteNote = (noteId: number) => {
+    const filterDelete = (filterNote: Note[]) => filterNote.filter((note) => note.id !== noteId);
+    setNotes((prev) => filterDelete(prev));
+  };
+
+  const handleArchiveNote = (noteId: number) => {
+    const mapArchive = (filterNote: Note[]) =>
+      filterNote.map((note) => {
+        if (note.id === noteId) return { ...note, archived: !note.archived };
+        return note;
+      });
+
+    setNotes((prev) => mapArchive(prev));
+  };
+
   return (
     <AppLayout>
       <AppBar term={term} onSearch={handleSearchNotes} clearSearch={clearSearch} />
       <main className="flex-1 mb-8">
         <Routes>
-          <Route path="/" element={<NotesMasonry notes={unarchivedNotes} />} />
-          <Route path="/archived" element={<NotesMasonry notes={archivedNotes} />} />
+          <Route
+            path="/"
+            element={
+              <NotesMasonry
+                notes={unarchivedNotes}
+                handleDeleteNote={handleDeleteNote}
+                handleArchiveNote={handleArchiveNote}
+              />
+            }
+          />
+          <Route
+            path="/archived"
+            element={
+              <NotesMasonry
+                notes={archivedNotes}
+                handleDeleteNote={handleDeleteNote}
+                handleArchiveNote={handleArchiveNote}
+              />
+            }
+          />
           <Route path="/new" element={<NewNote setNotes={setNotes} />} />
         </Routes>
       </main>
