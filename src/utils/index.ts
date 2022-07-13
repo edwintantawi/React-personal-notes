@@ -1,3 +1,5 @@
+import { Note } from '../@types';
+
 const getInitialData = () => [
   {
     id: 1,
@@ -54,4 +56,7 @@ const showFormattedDate = (date: string) => {
   return new Date(date).toLocaleDateString('id-ID', options);
 };
 
-export { getInitialData, showFormattedDate };
+const sortNotesByDateDesc = (a: Note, b: Note) =>
+  new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+
+export { getInitialData, showFormattedDate, sortNotesByDateDesc };

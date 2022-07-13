@@ -7,7 +7,7 @@ function TabBars(props: Props) {
 
   return (
     <nav>
-      <ul className="flex py-4 gap-2 items-center">{children}</ul>
+      <ul className="flex pt-4 gap-2 items-center">{children}</ul>
     </nav>
   );
 }
